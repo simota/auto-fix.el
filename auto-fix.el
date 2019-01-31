@@ -224,7 +224,7 @@ arguments can be set as a list via ‘auto-fix-option`."
   "Create temporary file at same directory for creating patch."
   (let ((basename (file-name-base buffer-file-name))
         (suffix (concat "." (file-name-extension buffer-file-name))))
-    (make-empty-file (concat auto-fix-temp-file-prefix basename suffix)) ; return nil
+    (write-region (point-min) (point-min) (concat auto-fix-temp-file-prefix basename suffix)) ; return nil
     (concat default-directory auto-fix-temp-file-prefix basename suffix)))
 
 (defun auto-fix--delete-whole-line (&optional arg)
